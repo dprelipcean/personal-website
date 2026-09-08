@@ -134,8 +134,8 @@ em, .italic { font-style: italic; }
 .nav-links a {
   color: var(--ink-soft);
   text-decoration: none;
-  font-size: 0.76rem;
-  padding: 19px 7px;
+  font-size: 0.9rem;
+  padding: 19px 14px;
   white-space: nowrap;
   border-bottom: 2px solid transparent;
 }
@@ -149,7 +149,7 @@ em, .italic { font-style: italic; }
   border-bottom: 2px solid var(--accent);
 }
 
-@media (max-width: 1180px) {
+@media (max-width: 760px) {
   .nav-toggle { display: flex; }
   .nav-links {
     position: absolute;
@@ -255,6 +255,54 @@ main { background: var(--paper); }
   font-size: 0.85rem;
   color: var(--ink-faint);
   font-style: italic;
+}
+
+/* ---------- pillars (home page) ---------- */
+
+.pillars-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.pillar {
+  padding: 0 32px;
+  border-left: 1px solid var(--line);
+}
+
+.pillar:first-child {
+  padding-left: 0;
+  border-left: none;
+}
+
+.pillar:last-child {
+  padding-right: 0;
+}
+
+.pillar h3 {
+  font-size: 1.02rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+  line-height: 1.3;
+}
+
+.pillar p {
+  font-size: 0.92rem;
+  color: var(--ink-soft);
+  margin-bottom: 0;
+}
+
+@media (max-width: 800px) {
+  .pillars-grid { grid-template-columns: 1fr; }
+  .pillar {
+    padding: 24px 0;
+    border-left: none;
+    border-top: 1px solid var(--line);
+  }
+  .pillar:first-child {
+    padding-top: 0;
+    border-top: none;
+  }
+  .pillar:last-child { padding-bottom: 0; }
 }
 
 /* ---------- profile / about ---------- */
