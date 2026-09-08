@@ -1,0 +1,539 @@
+/* ============================================================
+   Daniel Prelipcean — personal site
+   Minimalist academic style: one serif family, white background,
+   a single muted ink accent, hairline rules, no motion.
+   ============================================================ */
+
+:root {
+  --paper: #ffffff;
+  --paper-alt: #f7f7f5;
+  --ink: #1b1b1a;
+  --ink-soft: #55565a;
+  --ink-faint: #8b8c8f;
+  --line: #dcdcd7;
+  --accent: #40506e;   /* single muted slate-ink accent, used sparingly */
+
+  --font: "Source Serif 4", Georgia, "Times New Roman", serif;
+
+  --max: 700px;
+  --max-wide: 920px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font);
+  font-size: 18px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+img { max-width: 100%; display: block; }
+
+a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-decoration-color: var(--line);
+  text-underline-offset: 2px;
+  transition: text-decoration-color 0.12s ease;
+}
+
+a:hover {
+  text-decoration-color: var(--accent);
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font);
+  font-weight: 600;
+  line-height: 1.2;
+  margin: 0 0 0.5em;
+  color: var(--ink);
+}
+
+p { margin: 0 0 1.1em; }
+
+em, .italic { font-style: italic; }
+
+.mono { font-style: italic; color: var(--ink-soft); }
+
+:focus-visible {
+  outline: 1.5px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* ---------- layout helpers ---------- */
+
+.wrap {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.wrap-wide {
+  max-width: var(--max-wide);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ---------- top nav ---------- */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--paper);
+  border-bottom: 1px solid var(--line);
+}
+
+.nav-bar {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 58px;
+}
+
+.nav-brand {
+  font-family: var(--font);
+  font-weight: 600;
+  font-size: 1.05rem;
+  color: var(--ink);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.nav-brand span { color: var(--ink-faint); }
+
+.nav-toggle {
+  display: none;
+  background: none;
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  width: 36px;
+  height: 32px;
+  color: var(--ink);
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-toggle svg { width: 16px; height: 16px; }
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.nav-links a {
+  color: var(--ink-soft);
+  text-decoration: none;
+  font-size: 0.76rem;
+  padding: 19px 7px;
+  white-space: nowrap;
+  border-bottom: 2px solid transparent;
+}
+
+.nav-links a:hover {
+  color: var(--ink);
+}
+
+.nav-links a.active {
+  color: var(--ink);
+  border-bottom: 2px solid var(--accent);
+}
+
+@media (max-width: 1180px) {
+  .nav-toggle { display: flex; }
+  .nav-links {
+    position: absolute;
+    top: 58px;
+    left: 0;
+    right: 0;
+    background: var(--paper);
+    flex-direction: column;
+    align-items: stretch;
+    max-height: 0;
+    overflow: hidden;
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-links.open { max-height: 640px; }
+  .nav-links a { padding: 13px 24px; border-bottom: 1px solid var(--paper-alt); }
+  .nav-links a.active { color: var(--accent); border-bottom: 1px solid var(--paper-alt); }
+}
+
+/* ---------- hero (home only) ---------- */
+
+.hero {
+  padding: 64px 0 20px;
+}
+
+.hero-eyebrow {
+  font-size: 0.9rem;
+  color: var(--ink-faint);
+  font-style: italic;
+  margin: 0 0 6px;
+}
+
+.hero h1 {
+  font-size: clamp(2rem, 4.4vw, 2.6rem);
+  margin-bottom: 0.2em;
+}
+
+.hero .role {
+  font-size: 1.1rem;
+  color: var(--ink-soft);
+  font-style: italic;
+  margin-bottom: 22px;
+}
+
+.hero .lede {
+  max-width: 66ch;
+  font-size: 1.02rem;
+}
+
+.hero-links {
+  font-size: 0.95rem;
+  margin-top: 20px;
+}
+
+.hero-links a {
+  color: var(--ink);
+}
+
+/* ---------- generic page header (non-home pages) ---------- */
+
+.page-head {
+  padding: 46px 0 30px;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 46px;
+}
+
+.page-head .kicker {
+  font-size: 0.85rem;
+  color: var(--ink-faint);
+  font-style: italic;
+  margin-bottom: 8px;
+}
+
+.page-head h1 {
+  font-size: clamp(1.7rem, 3.6vw, 2.15rem);
+  margin-bottom: 8px;
+}
+
+.page-head p {
+  color: var(--ink-soft);
+  max-width: 60ch;
+  margin-bottom: 0;
+}
+
+/* ---------- content sections ---------- */
+
+main { background: var(--paper); }
+
+.section {
+  padding: 0 0 50px;
+}
+
+.section-head {
+  margin-bottom: 24px;
+}
+
+.section-head h2 {
+  font-size: 1.3rem;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--line);
+}
+
+.section-note {
+  font-size: 0.85rem;
+  color: var(--ink-faint);
+  font-style: italic;
+}
+
+/* ---------- profile / about ---------- */
+
+.about-layout {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 40px;
+  align-items: start;
+}
+
+.profile-photo {
+  width: 100%;
+  border: 1px solid var(--line);
+  filter: grayscale(35%);
+}
+
+.link-pills {
+  margin-top: 16px;
+}
+
+.link-pill {
+  font-size: 0.86rem;
+  color: var(--ink-soft);
+  text-decoration: underline;
+  text-decoration-color: var(--line);
+  display: inline-block;
+  margin-right: 14px;
+  margin-bottom: 6px;
+}
+
+.link-pill:hover { color: var(--accent); text-decoration-color: var(--accent); }
+
+@media (max-width: 700px) {
+  .about-layout { grid-template-columns: 1fr; }
+  .profile-photo { max-width: 160px; }
+}
+
+/* ---------- timeline (education / experience / internships) ---------- */
+
+.timeline {
+  border-left: 1px solid var(--line);
+  padding-left: 24px;
+}
+
+.timeline-item {
+  padding-bottom: 30px;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 30px;
+}
+
+.timeline-item:last-child { padding-bottom: 0; border-bottom: none; margin-bottom: 0; }
+
+.tl-date {
+  font-size: 0.86rem;
+  font-style: italic;
+  color: var(--ink-faint);
+  margin-bottom: 4px;
+}
+
+.tl-title {
+  font-family: var(--font);
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+
+.tl-org {
+  font-size: 0.95rem;
+  color: var(--ink-soft);
+  font-style: italic;
+  margin-bottom: 10px;
+}
+
+.tl-body p { margin-bottom: 8px; font-size: 0.98rem; }
+
+.tl-body ul {
+  margin: 0 0 8px;
+  padding-left: 20px;
+}
+.tl-body li { margin-bottom: 4px; font-size: 0.98rem; }
+
+/* ---------- simple lists (supervision, teaching, student rep, press) ---------- */
+
+.entry-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.entry {
+  padding: 16px 0;
+  border-bottom: 1px solid var(--line);
+}
+.entry:first-child { padding-top: 0; }
+.entry:last-child { border-bottom: none; padding-bottom: 0; }
+
+.entry-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  flex-wrap: wrap;
+  align-items: baseline;
+}
+
+.entry-title { font-weight: 600; font-size: 1rem; }
+.entry-date { font-size: 0.85rem; font-style: italic; color: var(--ink-faint); white-space: nowrap; }
+.entry-meta { font-size: 0.92rem; color: var(--ink-soft); margin-top: 3px; }
+
+/* ---------- skills ---------- */
+
+.skill-groups {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 36px 48px;
+}
+
+.skill-group h3 {
+  font-size: 1rem;
+  font-style: italic;
+  font-weight: 400;
+  color: var(--ink-soft);
+  margin-bottom: 12px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--line);
+}
+
+.skill-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--paper-alt);
+}
+.skill-row:last-child { border-bottom: none; }
+
+.skill-name { font-size: 0.98rem; }
+
+.skill-level {
+  font-size: 0.85rem;
+  font-style: italic;
+  color: var(--ink-faint);
+}
+
+@media (max-width: 700px) {
+  .skill-groups { grid-template-columns: 1fr; }
+}
+
+/* ---------- pill sub-nav (for long pages like publications) ---------- */
+
+.subnav {
+  margin-bottom: 46px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--line);
+}
+
+.subnav a {
+  font-size: 0.92rem;
+  color: var(--ink-soft);
+  margin-right: 18px;
+  display: inline-block;
+}
+
+/* ---------- publications ---------- */
+
+.pub-list {
+  list-style: decimal;
+  margin: 0 0 34px;
+  padding-left: 22px;
+}
+
+.pub-item {
+  padding: 14px 0;
+  border-bottom: 1px solid var(--paper-alt);
+  font-size: 0.98rem;
+}
+.pub-item:last-child { border-bottom: none; }
+
+.pub-authors {
+  color: var(--ink-soft);
+}
+
+.pub-title {
+  font-weight: 600;
+  color: var(--ink);
+  margin-top: 3px;
+}
+
+.pub-venue {
+  margin-top: 4px;
+  color: var(--ink-soft);
+  font-style: italic;
+  font-size: 0.9rem;
+}
+
+.pub-year {
+  font-style: normal;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.pub-doi, .pub-link {
+  margin-top: 3px;
+  font-size: 0.88rem;
+  color: var(--ink-faint);
+}
+
+.pub-doi a, .pub-link a {
+  color: var(--accent);
+}
+
+.pub-sub-h {
+  font-size: 0.95rem;
+  font-style: italic;
+  color: var(--ink-soft);
+  margin: 0 0 8px;
+}
+
+/* ---------- awards / press cards ---------- */
+
+.card-grid {
+  display: flex;
+  flex-direction: column;
+}
+
+.card {
+  padding: 14px 0;
+  border-bottom: 1px solid var(--line);
+}
+.card:last-child { border-bottom: none; }
+.card h3 { font-size: 1.02rem; margin-bottom: 3px; font-weight: 600; }
+.card .card-meta { font-size: 0.88rem; font-style: italic; color: var(--ink-faint); }
+
+/* ---------- contact ---------- */
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: start;
+}
+
+.contact-block { margin-bottom: 22px; }
+.contact-block h3 {
+  font-size: 0.85rem;
+  font-style: italic;
+  color: var(--ink-faint);
+  font-weight: 400;
+  margin-bottom: 6px;
+}
+.contact-block p { margin: 0; font-size: 1.05rem; }
+
+.map-frame {
+  width: 100%;
+  height: 300px;
+  border: 1px solid var(--line);
+  filter: grayscale(65%) contrast(1.05);
+}
+
+@media (max-width: 800px) {
+  .contact-grid { grid-template-columns: 1fr; }
+}
+
+/* ---------- footer ---------- */
+
+.site-footer {
+  border-top: 1px solid var(--line);
+  padding: 26px 0;
+  font-size: 0.85rem;
+  color: var(--ink-faint);
+}
+
+.footer-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.footer-inner a { color: var(--ink-soft); }
